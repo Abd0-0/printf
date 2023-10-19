@@ -5,13 +5,14 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 #define BUFSIZE 1024
 
 int _printf(const char *format, ...);
 int _putchar(char c);
 int _strlen(const char *s);
-
+void *malloc_checked(unsigned int b);
 
 /**
  * struct type - Struct type

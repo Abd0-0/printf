@@ -9,13 +9,9 @@
  */
 int _printf(const char *format, ...)
 {
-	char *ptr, *buf = malloc_checked(BUFSIZE);
-	int i, j, len, counter = 0;
+	char *ptr, *buf;
+	int i, j, len, counter;
 	va_list argp;
-
-	va_start(argp, format);
-	ptr = &buf[0];
-
 	s_type type[] = {
 		{"c", pc},
 		{"s", ps},
@@ -23,6 +19,10 @@ int _printf(const char *format, ...)
 		{"d", pi},
 		{NULL, NULL}
 	};
+
+	buf = malloc_checked(BUFSIZE);
+	ptr = buf;
+	va_start(argp, format);
 
 	if (!format)
 		return (-1);
@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 			i++;
 			for (j = 0; type[j].f != NULL; j++)
 			{
-				if (format[i] == type[j].f[0] && format[i])
+				if (format[i] == type[j].fs[0] && format[i])
 					ptr = type[j].f(argp, ptr);
 			}
 		}
