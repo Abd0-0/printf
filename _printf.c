@@ -15,8 +15,6 @@ int _printf(const char *format, ...)
 	s_type type[] = {
 		{"c", pc},
 		{"s", ps},
-		{"i", pi},
-		{"d", pi},
 		{NULL, NULL}
 	};
 
@@ -44,7 +42,7 @@ int _printf(const char *format, ...)
 			}
 		}
 	}
-	counter = write(1, &buf, _strlen(buf));
+	counter = write(1, buf, _strlen(buf));
 	va_end(argp);
 	free(buf);
 	return (counter);
